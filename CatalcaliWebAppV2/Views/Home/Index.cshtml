@@ -20,19 +20,19 @@
     <div class="container">
         <div class="row">
 
-            <div class="modal custom show" id="myModal" tabindex="-1" role="dialog" aria-labelledby="trackModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 style="text-align:center"><b>Önemli Bilgilendirme</b></h5><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        </div>
-                        <div class="modal-body">
-                            <h6 style="text-align:left; color:green"><b>Değerli Müşterilerimiz,</b></h6>
-                            <p style="text-align:left; color:green"><b>Şu an için sadece İstanbul'a hizmet vermekteyiz.</b></p>
+            @*<div class="modal custom show" id="myModal" tabindex="-1" role="dialog" aria-labelledby="trackModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 style="text-align:center"><b>Önemli Bilgilendirme</b></h5><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <h6 style="text-align:left; color:green"><b>Değerli Müşterilerimiz,</b></h6>
+                                <p style="text-align:left; color:green"><b>Şu an için sadece İstanbul'a hizmet vermekteyiz.</b></p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                </div>*@
 
             <div id="carouselExampleIndicators" class="carousel slide header__carousel" data-ride="carousel">
                 <ol class="carousel-indicators">
@@ -97,15 +97,15 @@
                     });
                 </script>
 
-                <script type="text/javascript">
-                    $(document).ready(function () {
-                        if (sessionStorage.getItem('#myModal') !== 'true') {
-                            $('#myModal').modal('show');
+                @*<script type="text/javascript">
+                        $(document).ready(function () {
+                            if (sessionStorage.getItem('#myModal') !== 'true') {
+                                $('#myModal').modal('show');
 
-                            sessionStorage.setItem('#myModal', 'true');
-                        }
-                    });
-                </script>
+                                sessionStorage.setItem('#myModal', 'true');
+                            }
+                        });
+                    </script>*@
             }
         </div>
     </div>
