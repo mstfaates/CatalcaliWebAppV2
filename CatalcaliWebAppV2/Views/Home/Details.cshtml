@@ -1,0 +1,73 @@
+﻿@using CatalcaliWebAppV2.Entities
+@model Product
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+<section class="product-details spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="product__details__pic">
+                    <div class="product__details__pic__item">
+                        <img class="product__details__pic__item--large"
+                             src="~/Areas/Admin/Upload/Product/@Model.Image" alt="@Model.ImageDescription" height="600" width="600">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="product__details__text">
+                    <h3>@Model.Name</h3>
+                    @*<div class="product__details__rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-o"></i>
+                        <span>(1 yorum)</span>
+                    </div>*@
+                    <div class="product__details__price">@Model.Price.ToString("N") ₺</div>
+                    <p>
+                        @Model.Description
+                    </p>
+                    @*<div class="product__details__quantity">
+                        <div class="quantity">
+                            <div class="pro-qty">
+                                <input type="text" value="1 adet">
+                            </div>
+                        </div>
+                    </div>*@
+                    <div class="product__details__quantity">
+                        @using (Html.BeginForm("AddToCart", "Cart"))
+                        {
+                            @Html.HiddenFor(i => i.ProductId)
+                            <button type="submit" class="btn btn-success" style="border-radius: 10em;">
+                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                Sepete Ekle
+                            </button>
+                        }
+                    </div>
+
+                    <ul>
+                        <li><b>Miktar</b> <span>@Model.Weight</span></li>
+                        <li>
+                            <b>Stok durumu</b>
+                            <span>
+                                @if (Model.IsApproved)
+                                {
+                                    <span>Stokta Mevcut</span>
+                                }
+                                else
+                                {
+                                    <span>Mevcut Değil</span>
+                                }
+                            </span>
+                        </li>
+                        <li><b>Kargo Günleri</b> <span>Semtinizin kargo günlerini görmek için <samp><a href="/anasayfa/servis-gunleri" class="alert">tıklayın.</a></samp></span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Product Details Section End -->

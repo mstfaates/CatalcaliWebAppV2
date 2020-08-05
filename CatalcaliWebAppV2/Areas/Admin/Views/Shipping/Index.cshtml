@@ -1,0 +1,52 @@
+﻿@model IEnumerable<CatalcaliWebAppV2.Entities.Shipping>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<style>
+    #badgeWidth {
+        width: 60px;
+    }
+</style>
+<h2>Kargo Listesi</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ShippingName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShippingDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShippingFee)
+        </th>
+        <th>
+            İşlemler
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShippingName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShippingDescription)
+            </td>
+            @{
+                string moneyFormat = item.ShippingFee.ToString("c");
+            }
+            <td>
+                @Html.DisplayFor(modelItem => moneyFormat)
+            </td>
+            <td>
+                @Html.ActionLink("Düzenle", "EditShipping", new { id = item.ShippingId }, new { @class = "badge badge-danger", Id = "badgeWidth" }) |
+                @Html.ActionLink("Sil", "Delete", new { id = item.ShippingId }, new { @class = "badge badge-info", Id = "badgeWidth" })
+            </td>
+        </tr>
+    }
+
+</table>

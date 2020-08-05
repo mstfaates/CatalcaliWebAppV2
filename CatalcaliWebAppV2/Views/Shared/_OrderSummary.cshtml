@@ -1,0 +1,25 @@
+﻿
+@model CatalcaliWebAppV2.Models.Cart
+
+<style>
+    #p {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 15ch;
+    }
+</style>
+
+@foreach (var item in Model.CartLines)
+{
+    <ul>
+        <li>@item.Product.Name x @item.Quantity<span>@((item.Product.Price * item.Quantity).ToString("N"))<span>&#8378;</span></span></li>
+    </ul>
+}
+<div class="checkout__order__subtotal">
+    <div>Ara Toplam <span>@Model.SubTotal().ToString("N")<span>&#8378;</span></span></div>
+    <div>Kargo Ücreti <span>@Model.ShippingFee().ToString("N")<span>&#8378;</span></span></div>
+</div>
+<div class="checkout__order__total">Toplam <span>@Model.Total().ToString("N")<span>&#8378;</span></span></div>
+
+

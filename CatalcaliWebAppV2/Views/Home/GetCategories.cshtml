@@ -1,0 +1,48 @@
+﻿@model IEnumerable<CatalcaliWebAppV2.Entities.Category>
+@{
+    var selectedCategory = Url.RequestContext.RouteData.Values["id"];
+}
+
+
+@foreach (var item in Model)
+{
+    if (selectedCategory != null)
+    {
+        if (item.Id == int.Parse(selectedCategory.ToString()))
+        {
+            if (item.CategoryImage != null && item.CategoryImage != null)
+            {
+                //seçilen kategori ile route id si birbirine eşit.
+                <li class="active"><a href="/anasayfa/urunler/kategoriler/@item.Id" class="hvr-float-shadow"><img src="~/Areas/Admin/Upload/Icon/@item.CategoryImage" height="30" width="30" />@item.Name</a></li>
+            }
+            else
+            {
+                <li class="active"><a href="/anasayfa/urunler/kategoriler/@item.Id" class="hvr-float-shadow">@item.Name</a></li>
+            }
+        }
+        else
+        {
+            if (item.CategoryImage != null && item.CategoryImage != null)
+            {
+                <li><a href="/anasayfa/urunler/kategoriler/@item.Id" class="hvr-float-shadow"><img src="~/Areas/Admin/Upload/Icon/@item.CategoryImage" height="30" width="30" />@item.Name</a></li>
+            }
+            else
+            {
+                <li><a href="/anasayfa/urunler/kategoriler/@item.Id" class="hvr-float-shadow">@item.Name</a></li>
+            }
+        }
+    }
+    else
+    {
+        if (item.CategoryImage != null && item.CategoryImage != null)
+        {
+            <li><a href="/anasayfa/urunler/kategoriler/@item.Id" class="hvr-float-shadow"><img src="~/Areas/Admin/Upload/Icon/@item.CategoryImage" height="30" width="30" />@item.Name</a></li>
+        }
+        else
+        {
+            <li><a href="/anasayfa/urunler/kategoriler/@item.Id" class="hvr-float-shadow">@item.Name</a></li>
+        }
+    }
+}
+
+

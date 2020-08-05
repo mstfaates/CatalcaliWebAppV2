@@ -1,0 +1,108 @@
+﻿@model CatalcaliWebAppV2.Models.ShippingDetailsViewModel
+@{
+    ViewBag.Title = "Checkout";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+@{
+    CatalcaliWebAppV2.Models.Cart cart = (CatalcaliWebAppV2.Models.Cart)ViewData["Cart"];
+}
+
+<style>
+    textarea {
+        resize: none;
+    }
+</style>
+
+
+<section class="checkout spad">
+    <div class="container">
+        @*<h5>@Html.ValidationSummary()</h5>*@
+        @if (cart.CartLines.Count > 0)
+        {
+            <div class="row">
+                <div class="col-lg-12">
+                    <h6>
+                        <span class="icon_tag_alt"></span> İndirim Kodunuz mu var? Kodunuzu girmek için <a href="#">Tıklayın</a>
+                    </h6>
+                </div>
+            </div>
+            <div class="checkout__form">
+                <h4>Fatura Detayı</h4>
+                @using (Html.BeginForm())
+                {
+                    <div class="row">
+                        <div class="col-lg-8 col-md-6">
+                            <div class="checkout__input">
+                                <p>Adres Başlığı<span>*</span></p>
+                                @Html.TextBoxFor(x => x.AdresBasligi, new { @class = "form-control", @placeholder = "Ev, Ofis, Kampüs" })
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>İsim<span>*</span></p>
+                                        @Html.TextBoxFor(x => x.İsim, new { @class = "form-control", @placeholder = "İsim" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>Soyisim<span>*</span></p>
+                                        @Html.TextBoxFor(x => x.Soyisim, new { @class = "form-control", @placeholder = "Soyisim" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>Şehir<span>*</span></p>
+                                        @Html.TextBoxFor(x => x.Sehir, new { @class = "form-control", @placeholder = "Şehir" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>İlçe<span>*</span></p>
+                                        @Html.TextBoxFor(x => x.İlce, new { @class = "form-control", @placeholder = "İlçe" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="checkout__input">
+                                <p>Adres<span>*</span></p>
+                                @Html.TextAreaFor(x => x.Adres, new { @class = "form-control", @placeholder = "Adres" })
+                            </div>
+                            <div class="checkout__input">
+                                <p>Posta Kodu<span>*</span></p>
+                                @Html.TextBoxFor(x => x.PostaKodu, new { @class = "form-control", @placeholder = "Posta Kodu" })
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>Cep Telefonu<span>*</span></p>
+                                        @Html.TextBoxFor(x => x.Telefon, new { @class = "form-control", @placeholder = "Cep Telefonu" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>Eposta<span>*</span></p>
+                                        @Html.TextBoxFor(x => x.Eposta, new { @class = "form-control", @placeholder = "Eposta" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="checkout__input">
+                                <p>Sipariş Notu</p>
+                                @Html.TextAreaFor(x => x.OrderNote, new { @class = "form-control", @placeholder = "Sipariş hakkında not ekleyebilirsiniz." })
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="checkout__order">
+                                <h4>Sipariş Özeti</h4>
+                                <div class="checkout__order__products">Ürünler <span>Toplam</span></div>
+                                @Html.Partial("_OrderSummary", cart)
+                                <button type="submit" class="site-btn">Siparisi Tamamla</button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</section>

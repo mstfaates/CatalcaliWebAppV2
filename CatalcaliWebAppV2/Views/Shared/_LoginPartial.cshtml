@@ -1,0 +1,51 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    <nav class="header__menu__login">
+        <ul>
+            <li>
+                <a href="~/hesap/kullanici-bilgi-güncelleme">
+                    <button class="btn btn-round_custom btn-default_custom login-custom summary-custom">
+                        <div class="login-fa-users-padding">
+                            <i class="fa fa-user-o fa-fa-user-o-custom" aria-hidden="true"></i>
+                        </div>
+                        <span class="login-partial-auth-text"> Hesabım</span>
+                    </button>
+                </a>
+                @using (Html.BeginForm("cikis", "hesabim", FormMethod.Post, new { id = "logoutForm" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <ul class="header__menu__dropdown" style="margin-top: 17.5px">
+                        <li><a href="~/hesap/kullanici-bilgi-güncelleme">Hesap Ayarları</a></li>
+                        <li><a href="~/hesabim/siparislerim">Siparislerim</a></li>
+                        <li><a href="javascript:document.getElementById('logoutForm').submit()">Oturumu Kapat</a></li>
+                    </ul>
+                }
+            </li>
+        </ul>
+    </nav>
+}
+else
+{
+    <nav class="header__menu__login">
+        <ul>
+            <li>
+                <a href="~/hesabim/giris-yap">
+                    <button class="btn btn-round_custom btn-default_custom login-custom">
+                        <div class="login-fa-users-padding">
+                            <i class="fa fa-user-o login-fa-users-nonauth" aria-hidden="true"></i>
+                        </div>
+                        <span class="login-partial-nonauth-text"> Giriş Yap</span>
+                        <p style="line-height:0px; margin-bottom:6px">
+                            <small class="login-partial-nonauth-text-end">veya Üye Ol</small>
+                        </p>
+                    </button>
+                </a>
+                <ul class="header__menu__dropdown" style="margin-top: 17.5px">
+                    <li>@Html.ActionLink("Üye Ol", "uye-ol", "hesabim", routeValues: null, htmlAttributes: new { id = "registerLink", Class = "fa fa-user" })</li>
+                    <li>@Html.ActionLink("Giriş Yap", "giris-yap", "hesabim", routeValues: null, htmlAttributes: new { id = "loginLink", Class = "fa fa-user" })</li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+}

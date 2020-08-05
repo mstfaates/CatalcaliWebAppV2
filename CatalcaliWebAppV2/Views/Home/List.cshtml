@@ -1,0 +1,24 @@
+﻿@using CatalcaliWebAppV2.Models
+@model IEnumerable<ProductModel>
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+<section class="product spad">
+    <div class="container">
+        @if (Model.Count() == 0)
+        {
+            <div class="alert alert-warning" role="alert">
+                <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                Bu kategoride bir ürün bulunamadı.
+            </div>
+        }
+        else
+        {
+            <div class="row">
+                @Html.Partial("_ProductList", Model)
+            </div>
+        }
+    </div>
+</section>

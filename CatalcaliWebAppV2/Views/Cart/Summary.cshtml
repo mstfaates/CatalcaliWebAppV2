@@ -1,0 +1,7 @@
+﻿@model CatalcaliWebAppV2.Models.Cart
+
+<div class="header__cart">
+    <button onclick="window.location.href='/sepetim';" type="button" class="btn btn-round_custom btn-default_custom SummaryBtnStyle summary-custom">
+        <img src="~/Content/ogani/img/bag.svg" height="25" width="25" /><div class="header__cart__price"><span>@Model.CartLines.Count</span></div><i class="summary-sepetim">Sepetim</i>
+    </button>
+</div>

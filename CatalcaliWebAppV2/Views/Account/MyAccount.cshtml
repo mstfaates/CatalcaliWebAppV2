@@ -1,0 +1,83 @@
+﻿@model IEnumerable<CatalcaliWebAppV2.Models.UserOrderModel>
+@{
+    ViewBag.Title = "MyAccount";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<style>
+    #custom {
+        padding-top: 20px;
+        padding-bottom: 130px;
+    }
+</style>
+
+
+<div class="container">
+    <section class="shoping-cart spad">
+        <section class="checkout spad" style="padding-top: 0px; padding-bottom: 0px;">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h6 style="font-size:20px; color:black; margin-bottom:0px">Siparişlerim</h6>
+                </div>
+            </div>
+        </section>
+
+        <div class="row">
+            <div class="col-md-3">
+                <ul class="list-group" id="custom">
+                    <a href="/hesap/kullanici-bilgi-güncelleme" class="list-group-item">
+                        Üyelik Bilgilerim
+                    </a>
+                    <a href="hesabimSiparislerim" class="list-group-item active">
+                        Siparişlerim
+                    </a>
+                    <a href="/hesap/sifre-degistirme" class="list-group-item">
+                        Şifre Değişikliği
+                    </a>
+                    <a href="/hesap/adres-bilgisi-güncelle" class="list-group-item">
+                        Adres Değişikliği
+                    </a>
+                </ul>
+            </div>
+            <div class="col-md-9">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="shoping__cart__table">
+                                <table>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td class="shoping__cart__item">
+                                                    @*<img src="~/Areas/Admin/Upload/@item" alt="">*@
+                                                    <h6>Siparis No: <b>@item.OrderNumber</b></h6>
+                                                </td>
+                                                <td class="shoping__cart__price">
+                                                    @item.OrderState
+                                                </td>
+                                                <td class="shoping__cart__price">
+                                                    @item.OrderDate.ToString("dd MMMM dddd")
+                                                </td>
+                                                <td class="shoping__cart__price">
+                                                    @item.Total.ToString("c")
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

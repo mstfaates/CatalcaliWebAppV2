@@ -1,0 +1,51 @@
+﻿@model  IEnumerable<CatalcaliWebAppV2.Areas.Admin.Models.AdminOrderModel>
+@{
+    ViewBag.Title = "Delivered";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<style>
+    #faID {
+        color: #78a15c;
+    }
+</style>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Siparişler</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive table-hover">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th><i class="fa fa-bullhorn" aria-hidden="true"></i> Sipariş</th>
+                        <th><i class="fa fa-calendar-alt" aria-hidden="true"></i> Tarih</th>
+                        <th><i class="fa fa-pencil-alt" aria-hidden="true"></i> Durum</th>
+                        <th><i class="fa fa-bookmark" aria-hidden="true"></i> Faturalama</th>
+                        <th><i class="fa fa-money-bill" aria-hidden="true"></i> Toplam</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th><i class="fa fa-bullhorn" aria-hidden="true"></i> Sipariş</th>
+                        <th><i class="fa fa-calendar-alt" aria-hidden="true"></i> Tarih</th>
+                        <th><i class="fa fa-pencil-alt" aria-hidden="true"></i> Durum</th>
+                        <th><i class="fa fa-bookmark" aria-hidden="true"></i> Faturalama</th>
+                        <th><i class="fa fa-money-bill" aria-hidden="true"></i> Toplam</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.ActionLink(item.OrderNumber, "Details", new { id = item.Id })</td>
+                            <td>@item.OrderDate.ToString("dd/MM/yyyy")</td>
+                            <td><i class="fa fa-check" id="faID"></i> @item.OrderState</td>
+                            <td>@item.İsim @item.Soyisim <br /> @item.Adres</td>
+                            <td>@item.Total.ToString("c")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

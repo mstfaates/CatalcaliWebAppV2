@@ -1,0 +1,90 @@
+﻿@model CatalcaliWebAppV2.Entities.Product
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Ürün Detay</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CategoryId)
+        </dt>
+        <hr />
+        <dd>
+            @Html.DisplayFor(model => model.CategoryId)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <hr />
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <hr />
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <hr />
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.Weight)
+        </dt>
+        <hr />
+        <dd>
+            @Html.DisplayFor(model => model.Weight)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.Stock)
+        </dt>
+        <hr />
+        <dd>
+            @Html.DisplayFor(model => model.Stock)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+        <hr />
+        <dd>
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.IsHome)
+        </dt>
+        <hr />
+        <dd>
+            @Html.DisplayFor(model => model.IsHome)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.IsApproved)
+        </dt>
+        <hr />
+        <dd>
+            @Html.DisplayFor(model => model.IsApproved)
+        </dd>
+        <hr />
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Güncelle", "Edit", new { id = Model.ProductId }) |
+    @Html.ActionLink("Ürünler Listesine Ger Dön", "Index")
+</p>

@@ -1,0 +1,43 @@
+﻿@model CatalcaliWebAppV2.Models.ShippingDetailsViewModel
+@{
+    ViewBag.Title = "Completed";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<style>
+    .box {
+        border: 2px solid grey;
+        padding: 10px;
+        margin-top: 50px;
+        margin-bottom: 50px;
+        width: 800px;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 row">
+            <div class="box col-lg-6">
+                <h2 style="color:#78a15c"><i class="fa fa-check"></i>Siparişin Bize Ulaştı!</h2>
+                <hr />
+                <div>
+                    Ödeme işlemi kapıda, <b>Nakit</b> veya <b>Kredi Kartı</b> ile gerçekleştirilecektir.<br />
+                    Siparişinizi en hızlı şekilde size teslim edilecektir.<br />
+                    <span style="color: darkgrey">Çatalcalı Organik Doğal Gıdayı tercih ettiğiniz için teşekkür ederiz.</span>
+                </div>
+                <hr />
+                <h2 style="color:#78a15c">Sipariş Adresi</h2>
+                <hr />
+                <div>
+                    <b>Teslim edilecek kişi:</b> @Model.İsim @Model.Soyisim<br />
+                    <b>Telefon:</b> @Model.Telefon
+                    <b>Teslimat adresi:</b> @Model.Adres
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <img style="max-width: 70%; max-height: 100%; margin-bottom: -550px;" src="~/Content/ogani/img/yesilkamyon.png" />
+            </div>
+        </div>
+    </div>
+</div>
+

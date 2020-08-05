@@ -1,0 +1,75 @@
+﻿@model CatalcaliWebAppV2.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+<style>
+</style>
+<div class="container">
+    <!-- Outer Row -->
+    <div class="col-xl-6 login-page-margin">
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Üye Ol</h1>
+                            </div>
+                            @using (Html.BeginForm("uye-ol", "hesabim", FormMethod.Post, new { role = "form" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <hr />
+                                <form class="user">
+                                    @Html.ValidationSummary("", new { @class = "text-danger" })
+                                    <div class="form-group row">
+
+                                        <div class="col-sm-6 mb-3 mb-sm-0">
+                                            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control form-control-user", @placeholder = "İsim" })
+                                        </div>
+                                        <div class="col-sm-6">
+                                            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control form-control-user", @placeholder = "Soyisim" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-6 mb-3 mb-sm-0">
+                                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control form-control-user", @placeholder = "Eposta" })
+                                        </div>
+                                        <div class="col-sm-6 mb-3 mb-sm-0">
+                                            @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control form-control-user", @placeholder = "Telefon" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-12">
+                                            @Html.TextAreaFor(m => m.Address, new { @class = "form-control form-control-user", @placeholder = "Adres" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-6 mb-3 mb-sm-0">
+                                            @Html.PasswordFor(m => m.Password, new { @class = "form-control form-control-user", @placeholder = "Parola" })
+                                        </div>
+                                        <div class="col-sm-6">
+                                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control form-control-user", @placeholder = "Parola Tekrarı" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="submit" class="btn btn-primary btn-user btn-block" value="Üye Ol" />
+                                    </div>
+                                </form>
+                            }
+                            <hr>
+                            <div class="text-center">
+                                <a class="small" href="/hesabim/giris-yap">Zaten bir hesabın var mı? Giriş yap!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

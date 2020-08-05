@@ -1,0 +1,213 @@
+﻿@using CatalcaliWebAppV2.Models
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Catalcali Organik">
+    <meta name="keywords" content="Catalcali, organik, dogal, gida">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Çatalcalı | Organik Doğal Gıda</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+
+    <!-- Css Styles -->
+    <link href="~/Content/ogani/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/ogani/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/ogani/css/elegant-icons.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/ogani/css/nice-select.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/ogani/css/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/ogani/css/owl.carousel.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/ogani/css/slicknav.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/ogani/css/style.css" rel="stylesheet" type="text/css" />
+
+
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Humberger Begin -->
+    <div class="humberger__menu__overlay"></div>
+    <div class="humberger__menu__wrapper">
+        <div class="humberger__menu__logo">
+            <a href="/Home/Index"><img src="~/Content/ogani/img/CatalcaliLogo.svg" style="height:100px; width:310px"></a>
+        </div>
+        @*<div class="humberger__menu__cart">
+            @Html.Action("Summary", "Cart")
+        </div>
+        <div class="humberger__menu__widget">
+            <div class="header__top__right__auth">
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>*@
+        <nav class="humberger__menu__nav mobile-menu">
+            <ul>
+                @Html.Action("GetCategories", "Home")
+            </ul>
+        </nav>
+        <div id="mobile-menu-wrap"></div>
+        <div class="header__top__right__social">
+            <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/catalcaliodg/"><i class="fa fa-instagram"></i></a>
+            <a target="_blank" rel="noopener noreferrer" href="https://web.whatsapp.com/send?phone=905377345964"><i class="fa fa-whatsapp"></i></a>
+        </div>
+        <div class="humberger__menu__contact">
+            <ul>
+                <li><i class="fa fa-truck"></i>Doğallık ayağına gelsin. Hemen sipariş ver!</li>
+            </ul>
+        </div>
+    </div>
+    <!-- Humberger End -->
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+
+                </div>
+                <div class="col-lg-4">
+                    <div class="header__logo">
+                        <a href="/Home/Index"><img src="~/Content/ogani/img/CatalcaliLogo.svg" height="100" width="310"></a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="header-responsive-buttons">
+                        <div style="display:inline-block">@Html.Partial("_LoginPartial")</div>
+                        <div style="display:inline-block">@Html.Action("Summary", "Cart")</div>
+                    </div>
+                </div>
+            </div>
+            <div class="humberger__open">
+                <i class="fa fa-bars"></i>
+            </div>
+        </div>
+    </header>
+    <!-- Header Section End -->
+    <!-- Hero Section Begin -->
+    <section class="hero" style="background-color:#78a15c">
+        <div class="container">
+            <div class="col-lg-15">
+                <nav class="header__menu">
+                    <ul>
+                        @Html.Action("GetCategories", "Home")
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </section>
+    <!-- Hero Section End -->
+    <!-- Featured Section Begin -->
+    @RenderBody()
+    <a class="back2Top" id="back2Top" title="Back to top" href="#">&#10148;</a>
+
+    <!-- Featured Section End -->
+    <!-- Footer Section Begin -->
+    <footer class="footer spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="footer__about">
+                        <div class="footer__about__logo">
+                            <a href="/Home/Index"><img src="~/Content/ogani/img/CatalcaliLogo.svg" height="100" width="310"></a>
+                        </div>
+                        <ul>
+                            <li><b>Adres:</b> Adnan Kahveci Mah. Kalkan Sokak Dora Park 4 Evleri Dükkan no:11 Beylikdüzü/İstanbul</li>
+                            <li><b>Telefon:</b> 0537 734 59 64</li>
+                            <li><b>E-Posta:</b> catalcaliodg@gmail.com</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="footer__widget">
+                        <ul>
+                            <h6>Kategoriler</h6>
+                            <li><a href="/anasayfa/urunler/kategoriler/1">Süt Ürünleri</a></li>
+                            <li><a href="/anasayfa/urunler/kategoriler/2">Yumurta Ürünleri</a></li>
+                            <li><a href="/anasayfa/urunler/kategoriler/3">Zeytin Ürünleri</a></li>
+                            <li><a href="/anasayfa/urunler/kategoriler/4">Bal ve Pekmez Ürünleri</a></li>
+                            <li><a href="/anasayfa/urunler/kategoriler/5">Mantı ve Börek Ürünleri</a></li>
+                            <li><a href="/anasayfa/urunler/kategoriler/6">Diğer Ürünlerimiz</a></li>
+                        </ul>
+                        <ul>
+                            <h6>Kurumsal</h6>
+                            <li><a href="/anasayfa/kapida-odeme">Kapıda Ödeme</a></li>
+                            <li><a href="/anasayfa/siparis-sureci">Siparis Süreci</a></li>
+                            <li><a href="/anasayfa/servis-gunleri">Servis Günleri</a></li>
+                        </ul>
+                        <ul>
+                            <h6>Müşteri Hizmetleri</h6>
+                            <li><a href="/anasayfa/sss">S.S.S.</a></li>
+                            <li><a href="/anasayfa/iletisim">İletisim</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="footer__widget">
+                        <div class="footer__widget__social">
+                            <a target="_blank" rel="noopener noreferrer" href="https://web.whatsapp.com/send?phone=905377345964"><i class="fa fa-whatsapp"></i></a>
+                            <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/catalcaliodg/"><i class="fa fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="footer__copyright">
+                        <div class="footer__copyright__text">
+                            <p>
+                                Copyright &copy;
+                                <script>document.write(new Date().getFullYear());</script> All rights reserved | Designed by <a href="https://www.linkedin.com/in/mstfaates/" target="_blank">Mustafa Ateş</a>
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+    <!-- Js Plugins -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="~/Content/bootstrap.css"></script>
+    <script src="~/Content/ogani/js/jquery-3.3.1.min.js"></script>
+    <script src="~/Content/ogani/js/bootstrap.min.js"></script>
+    <script src="~/Content/ogani/js/jquery.nice-select.min.js"></script>
+    <script src="~/Content/ogani/js/jquery-ui.min.js"></script>
+    <script src="~/Content/ogani/js/jquery.slicknav.js"></script>
+    <script src="~/Content/ogani/js/mixitup.min.js"></script>
+    <script src="~/Content/ogani/js/owl.carousel.min.js"></script>
+    <script src="~/Content/ogani/js/main.js"></script>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <script>
+        /*Scroll to top when arrow up clicked BEGIN*/
+        $(window).scroll(function () {
+            var height = $(window).scrollTop();
+            if (height > 100) {
+                $('#back2Top').fadeIn();
+            } else {
+                $('#back2Top').fadeOut();
+            }
+        });
+        $(document).ready(function () {
+            $("#back2Top").click(function (event) {
+                event.preventDefault();
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+                return false;
+            });
+
+        });
+                                        /*Scroll to top when arrow up clicked END*/
+    </script>
+</body>
+
+</html>
