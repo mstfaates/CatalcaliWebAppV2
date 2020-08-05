@@ -61,7 +61,7 @@ namespace CatalcaliWebAppV2.Areas.Admin.Controllers
                 if (photo != null && photo.ContentLength > 0)
                 {
                     string ext = Path.GetExtension(photo.FileName);
-                    photoName = photo.FileName.Replace(' ', '-').Replace(".jpeg", "").Replace(".jpg", "") + DateTime.Now.ToString().Replace(".", "").Replace(":", "").Replace(" ", "");
+                    photoName = photo.FileName.Replace(' ', '-').Replace(".jpeg", "").Replace(".jpg", "") + DateTime.Now.ToString().Replace(".", "").Replace(":", "").Replace(" ", "").Replace("AM", "").Replace("PM", "").Replace("/", "").Replace("\"","").Replace("-", "");
                     if (ext == ".jpg" || ext == ".jpeg")
                     {
                         photoName += ext;

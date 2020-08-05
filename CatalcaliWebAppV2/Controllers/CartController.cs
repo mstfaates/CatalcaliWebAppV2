@@ -107,9 +107,9 @@ namespace CatalcaliWebAppV2.Controllers
             using (_context = new DataContext())
             {
                 Order order = new Order();
-
+                
                 order.OrderNumber = "A" + (new Random()).Next(11111, 99999).ToString();
-                order.Total = cart.Total();
+                order.Total = cart.shipping;
                 order.OrderDate = DateTime.Now;
                 order.OrderState = EnumOrderState.Bekleyen;
                 order.Username = User.Identity.Name;

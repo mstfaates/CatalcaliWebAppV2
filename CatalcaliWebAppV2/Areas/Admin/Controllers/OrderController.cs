@@ -78,7 +78,7 @@ namespace CatalcaliWebAppV2.Areas.Admin.Controllers
                     Orderlines = i.Orderlines.Select(a => new OrderLineModel()
                     {
                         ProductId = a.ProductId,
-                        ProductName = a.Product.Name.Length > 50 ? a.Product.Name.Substring(0, 47) + "..." : a.Product.Name,
+                        ProductName = a.Product.Name,
                         Image = a.Product.Image,
                         Quantity = a.Quantity,
                         Price = a.Price

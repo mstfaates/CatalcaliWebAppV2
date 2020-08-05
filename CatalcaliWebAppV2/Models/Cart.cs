@@ -34,10 +34,12 @@ namespace CatalcaliWebAppV2.Models
         {
             _cardLines.RemoveAll(i => i.Product.ProductId == product.ProductId);
         }
+
         public double SubTotal()
         {
             return _cardLines.Sum(i => (i.Product.Price * i.Quantity));
         }
+
         public double Total()
         {
             return (shipping += _cardLines.Sum(i => i.Product.Price * i.Quantity));
@@ -47,6 +49,7 @@ namespace CatalcaliWebAppV2.Models
         {
             _cardLines.Clear();
         }
+
         public double ShippingFee()
         {
             Shipping shippings = _context.Shippings.FirstOrDefault(x => x.ShippingId == 1);
