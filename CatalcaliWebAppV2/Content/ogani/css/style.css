@@ -1705,7 +1705,6 @@ ol {
 
 .product__item__text {
     text-align: center;
-    padding-top: 15px;
 }
 
     .product__item__text h6 {
@@ -5228,25 +5227,8 @@ ol {
     color: white !important;
     background-color: #78a15c !important;
     border: 2px solid #78a15c !important;
+    margin-top: 10px;
 }
-
-/*.btn-outline-success:hover, .btn-outline-success:focus, .btn-outline-success:active, .btn-outline-success:active:focus, .btn-outline-success.active {
-        color: #00c851 !important;
-        background-color: transparent !important;
-        border-color: #00c851 !important;
-    }
-
-    .btn-outline-success:not([disabled]):not(.disabled):active, .btn-outline-success:not([disabled]):not(.disabled).active,
-    .show > .btn-outline-success.dropdown-toggle {
-        background-color: transparent !important;
-        border-color: #00c851 !important;
-        box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
-    }
-
-        .btn-outline-success:not([disabled]):not(.disabled):active:focus, .btn-outline-success:not([disabled]):not(.disabled).active:focus,
-        .show > .btn-outline-success.dropdown-toggle:focus {
-            box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
-        }*/
 
 .product__item__container {
     position: relative;
