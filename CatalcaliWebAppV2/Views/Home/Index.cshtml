@@ -7,67 +7,7 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
-<style>
-    /*#myModal {
-        width: 100%;
-        position: fixed;
-        bottom: 0;
-        right: 0;
-        margin: 0;
-    }*/
 
-    .product__pagination,
-    .blog__pagination {
-        padding-top: 10px;
-    }
-
-        .product__pagination span,
-        .blog__pagination span {
-            display: inline-block;
-            width: 30px;
-            height: 30px;
-            border: 1px solid #78a15c;
-            font-size: 14px;
-            color: #78a15c;
-            font-weight: 700;
-            line-height: 28px;
-            text-align: center;
-            margin-right: 16px;
-            -webkit-transition: all, 0.3s;
-            -moz-transition: all, 0.3s;
-            -ms-transition: all, 0.3s;
-            -o-transition: all, 0.3s;
-            transition: all, 0.3s;
-        }
-
-            .product__pagination span:hover,
-            .blog__pagination span:hover {
-                background: #78a15c;
-                border-color: #78a15c;
-                color: #78a15c;
-            }
-
-            .product__pagination span:last-child,
-            .blog__pagination span:last-child {
-               /* margin-right: 0;*/
-            }
-
-    .blog__pagination {
-        padding-top: 5px;
-        position: relative;
-    }
-
-        .blog__pagination:before {
-            position: absolute;
-            left: 0;
-            top: -29px;
-            height: 1px;
-            width: 100%;
-            background: #000000;
-            opacity: 0.1;
-            content: "";
-        }
-</style>
 
 
 <section class="product spad">
@@ -126,37 +66,11 @@
             <div class="row" id="ajax-main">
                 @Html.Partial("_ProductList", Model)
             </div>
-            <div class="product__pagination blog__pagination">
-                <span>@Html.PagedListPager((IPagedList)Model, Page => Url.Action("Index", new { Page, @class = "blog__pagination" }))</span>
-            </div>
 
+            @Html.PagedListPager((IPagedList)Model, Page => Url.Action("Index", new { Page = Page }), PagedListRenderOptions.Classic)
 
             @section scripts
                 {
-                @*<script type="text/javascript">
-
-                        var pageNo = 1;
-                        var isPageLoad = true;
-
-                        $(window).scroll(function () {
-                            if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-                                if (isPageLoad) {
-                                    $.ajax({
-                                        url: '/Home/Index',
-                                        data: { page: pageNo },
-                                        success: function (data) {
-                                            $("#ajax-main").append(data);
-                                            pageNo++;
-                                            if ($.trim(data) == '') {
-                                                isPageLoad = false;
-                                            }
-                                        }
-                                    });
-                                }
-                            }
-                        });
-                    </script>*@
-
                 <!--#region Site açılışında gelen bilgilendirme modalı-->
                 @*<script type="text/javascript">
                         $(document).ready(function () {

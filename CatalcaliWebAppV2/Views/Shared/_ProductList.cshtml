@@ -2,24 +2,15 @@
 @using CatalcaliWebAppV2.Models
 @model IEnumerable<ProductModel>
 
-<style>
-    .title-icon {
-        width: 27px;
-        height: 27px;
-        display: inline-block;
-        margin-right: 10px;
-        margin-left: 80px;
-        margin-top: 14px;
-        position: absolute;
-    }
-</style>
 
 @foreach (var item in Model)
 {
     <div class="col-md-3 col-md-3 col-md-3">
         <div class="product__item">
             <div class="product__item__pic">
-                <img src="~/Areas/Admin/Upload/Product/@item.Image" />
+                <a href="@Url.Action("Details", "Home", new { name = @Url.FriendlyURLTitles(item.Name), id = item.ProductId })">
+                    <img src="~/Areas/Admin/Upload/Product/@item.Image" />
+                </a>
             </div>
             <hr />
             <div class="product__item__text">

@@ -40,48 +40,6 @@ namespace CatalcaliWebAppV2.Controllers
                 CategoryId = x.CategoryId
             });
             return View(products.ToPagedList(page ,20));
-
-            //if (!page.HasValue)
-            //{
-            //    products = db.Products.OrderByDescending(x => x.ProductId).Take(pageSize)
-            //    .Where(x => x.IsApproved && x.IsHome)
-            //    .Select(x => new ProductModel()
-            //    {
-            //        ProductId = x.ProductId,
-            //        Name = x.Name.Length > 50 ? x.Name.Substring(0, 40) + "..." : x.Name,
-            //        Description = x.Description.Length > 50 ? x.Description.Substring(0, 40) + "..." : x.Description,
-            //        Price = x.Price,
-            //        Stock = x.Stock,
-            //        Weight = x.Weight,
-            //        Image = x.Image,
-            //        ImageDescription = x.ImageDescription,
-            //        CategoryId = x.CategoryId
-            //    });
-            //}
-            //else
-            //{
-            //    int pageIndex = pageSize * page.Value;
-
-            //    products = db.Products.OrderByDescending(x => x.ProductId).Skip(pageIndex).Take(pageSize)
-            //    .Where(x => x.IsApproved && x.IsHome)
-            //    .Select(x => new ProductModel()
-            //    {
-            //        ProductId = x.ProductId,
-            //        Name = x.Name.Length > 50 ? x.Name.Substring(0, 40) + "..." : x.Name,
-            //        Description = x.Description.Length > 50 ? x.Description.Substring(0, 40) + "..." : x.Description,
-            //        Price = x.Price,
-            //        Stock = x.Stock,
-            //        Weight = x.Weight,
-            //        Image = x.Image,
-            //        ImageDescription = x.ImageDescription,
-            //        CategoryId = x.CategoryId
-            //    });
-            //}
-            //if (Request.IsAjaxRequest())
-            //{
-            //    return PartialView("_ProductList", products);
-            //}
-            //return View(products);
         }
 
         [Route("urunler/detay/{name}-{id:int}")]

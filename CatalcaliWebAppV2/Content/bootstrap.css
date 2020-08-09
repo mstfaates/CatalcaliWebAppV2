@@ -11102,3 +11102,9 @@ a.text-dark:hover, a.text-dark:focus {
     }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+
+@media only screen and (min-width:361px)( max-width: 413px) {
+    .modal-dialog {
+        width: 350px !important; /* New width for default modal */
+    }
+}
