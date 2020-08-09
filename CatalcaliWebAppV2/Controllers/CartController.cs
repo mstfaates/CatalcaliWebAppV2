@@ -28,7 +28,7 @@ namespace CatalcaliWebAppV2.Controllers
             }
             return View(GetCart());
         }
-        public ActionResult AddToCart(int ProductId)
+        public JsonResult AddToCart(int ProductId)
         {
             using (_context = new DataContext())
             {
@@ -38,7 +38,7 @@ namespace CatalcaliWebAppV2.Controllers
                 {
                     GetCart().AddProduct(product, 1);
                 }
-                return RedirectToAction("Index","Home");
+                return Json(product, JsonRequestBehavior.AllowGet);
             }
         }
         public ActionResult RemoveFromCart(int Id)

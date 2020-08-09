@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
+using PagedList.Mvc;
 
 namespace CatalcaliWebAppV2.Controllers
 {
@@ -19,51 +21,67 @@ namespace CatalcaliWebAppV2.Controllers
         int pageSize = 12;
         // GET: Home
         [AllowAnonymous]
-        public ActionResult Index(int? page)
+        public ActionResult Index(int page = 1)
         {
             DataContext db = new DataContext();
-            IEnumerable<ProductModel> products = null;
-            if (!page.HasValue)
-            {
-                products = db.Products.OrderByDescending(x => x.ProductId).Take(pageSize)
-                .Where(x => x.IsApproved && x.IsHome)
-                .Select(x => new ProductModel()
-                {
-                    ProductId = x.ProductId,
-                    Name = x.Name.Length > 50 ? x.Name.Substring(0, 40) + "..." : x.Name,
-                    Description = x.Description.Length > 50 ? x.Description.Substring(0, 40) + "..." : x.Description,
-                    Price = x.Price,
-                    Stock = x.Stock,
-                    Weight = x.Weight,
-                    Image = x.Image,
-                    ImageDescription = x.ImageDescription,
-                    CategoryId = x.CategoryId
-                });
-            }
-            else
-            {
-                int pageIndex = pageSize * page.Value;
 
-                products = db.Products.OrderByDescending(x => x.ProductId).Skip(pageIndex).Take(pageSize)
-                .Where(x => x.IsApproved && x.IsHome)
-                .Select(x => new ProductModel()
-                {
-                    ProductId = x.ProductId,
-                    Name = x.Name.Length > 50 ? x.Name.Substring(0, 40) + "..." : x.Name,
-                    Description = x.Description.Length > 50 ? x.Description.Substring(0, 40) + "..." : x.Description,
-                    Price = x.Price,
-                    Stock = x.Stock,
-                    Weight = x.Weight,
-                    Image = x.Image,
-                    ImageDescription = x.ImageDescription,
-                    CategoryId = x.CategoryId
-                });
-            }
-            if (Request.IsAjaxRequest())
+            var products = db.Products.OrderByDescending(x => x.ProductId)
+            .Where(x => x.IsApproved && x.IsHome)
+            .Select(x => new ProductModel()
             {
-                return PartialView("_ProductList", products);
-            }
-            return View(products);
+                ProductId = x.ProductId,
+                Name = x.Name.Length > 50 ? x.Name.Substring(0, 40) + "..." : x.Name,
+                Description = x.Description.Length > 50 ? x.Description.Substring(0, 40) + "..." : x.Description,
+                Price = x.Price,
+                Stock = x.Stock,
+                Weight = x.Weight,
+                Image = x.Image,
+                ImageDescription = x.ImageDescription,
+                CategoryId = x.CategoryId
+            });
+            return View(products.ToPagedList(page ,20));
+
+            //if (!page.HasValue)
+            //{
+            //    products = db.Products.OrderByDescending(x => x.ProductId).Take(pageSize)
+            //    .Where(x => x.IsApproved && x.IsHome)
+            //    .Select(x => new ProductModel()
+            //    {
+            //        ProductId = x.ProductId,
+            //        Name = x.Name.Length > 50 ? x.Name.Substring(0, 40) + "..." : x.Name,
+            //        Description = x.Description.Length > 50 ? x.Description.Substring(0, 40) + "..." : x.Description,
+            //        Price = x.Price,
+            //        Stock = x.Stock,
+            //        Weight = x.Weight,
+            //        Image = x.Image,
+            //        ImageDescription = x.ImageDescription,
+            //        CategoryId = x.CategoryId
+            //    });
+            //}
+            //else
+            //{
+            //    int pageIndex = pageSize * page.Value;
+
+            //    products = db.Products.OrderByDescending(x => x.ProductId).Skip(pageIndex).Take(pageSize)
+            //    .Where(x => x.IsApproved && x.IsHome)
+            //    .Select(x => new ProductModel()
+            //    {
+            //        ProductId = x.ProductId,
+            //        Name = x.Name.Length > 50 ? x.Name.Substring(0, 40) + "..." : x.Name,
+            //        Description = x.Description.Length > 50 ? x.Description.Substring(0, 40) + "..." : x.Description,
+            //        Price = x.Price,
+            //        Stock = x.Stock,
+            //        Weight = x.Weight,
+            //        Image = x.Image,
+            //        ImageDescription = x.ImageDescription,
+            //        CategoryId = x.CategoryId
+            //    });
+            //}
+            //if (Request.IsAjaxRequest())
+            //{
+            //    return PartialView("_ProductList", products);
+            //}
+            //return View(products);
         }
 
         [Route("urunler/detay/{name}-{id:int}")]

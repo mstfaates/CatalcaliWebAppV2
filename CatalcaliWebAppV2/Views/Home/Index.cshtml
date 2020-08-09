@@ -1,24 +1,81 @@
-﻿@using CatalcaliWebAppV2.Models
-@model IEnumerable<ProductModel>
+﻿@using PagedList
+@using PagedList.Mvc
+@using CatalcaliWebAppV2.Models
+@model PagedList.IPagedList<ProductModel>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
 <style>
-    #myModal {
+    /*#myModal {
         width: 100%;
         position: fixed;
         bottom: 0;
         right: 0;
         margin: 0;
+    }*/
+
+    .product__pagination,
+    .blog__pagination {
+        padding-top: 10px;
     }
+
+        .product__pagination span,
+        .blog__pagination span {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border: 1px solid #78a15c;
+            font-size: 14px;
+            color: #78a15c;
+            font-weight: 700;
+            line-height: 28px;
+            text-align: center;
+            margin-right: 16px;
+            -webkit-transition: all, 0.3s;
+            -moz-transition: all, 0.3s;
+            -ms-transition: all, 0.3s;
+            -o-transition: all, 0.3s;
+            transition: all, 0.3s;
+        }
+
+            .product__pagination span:hover,
+            .blog__pagination span:hover {
+                background: #78a15c;
+                border-color: #78a15c;
+                color: #78a15c;
+            }
+
+            .product__pagination span:last-child,
+            .blog__pagination span:last-child {
+               /* margin-right: 0;*/
+            }
+
+    .blog__pagination {
+        padding-top: 5px;
+        position: relative;
+    }
+
+        .blog__pagination:before {
+            position: absolute;
+            left: 0;
+            top: -29px;
+            height: 1px;
+            width: 100%;
+            background: #000000;
+            opacity: 0.1;
+            content: "";
+        }
 </style>
 
 
 <section class="product spad">
     <div class="container">
         <div class="row">
+
+            <!--#region Site açılışında gelen bilgilendirme modalı-->
+            @*Site açıldığında gösterilen pop up*@
 
             @*<div class="modal custom show" id="myModal" tabindex="-1" role="dialog" aria-labelledby="trackModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
@@ -33,6 +90,7 @@
                         </div>
                     </div>
                 </div>*@
+            <!--#endregion-->
 
             <div id="carouselExampleIndicators" class="carousel slide header__carousel" data-ride="carousel">
                 <ol class="carousel-indicators">
@@ -44,12 +102,12 @@
                     <div class="carousel-item active">
                         <img class="d-block w-100" src="~/Content/ogani/img/CatalcaliBanner.jpg" alt="First slide">
                     </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="~/Content/ogani/img/CatalcaliBanner.jpg" alt="Second slide">
-                    </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="~/Content/ogani/img/CatalcaliBanner.jpg" alt="Third slide">
-                    </div>
+                    @*<div class="carousel-item">
+                            <img class="d-block w-100" src="~/Content/ogani/img/CatalcaliBanner.jpg" alt="Second slide">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="~/Content/ogani/img/CatalcaliBanner.jpg" alt="Third slide">
+                        </div>*@
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -68,35 +126,38 @@
             <div class="row" id="ajax-main">
                 @Html.Partial("_ProductList", Model)
             </div>
-
+            <div class="product__pagination blog__pagination">
+                <span>@Html.PagedListPager((IPagedList)Model, Page => Url.Action("Index", new { Page, @class = "blog__pagination" }))</span>
+            </div>
 
 
             @section scripts
                 {
-                <script type="text/javascript">
+                @*<script type="text/javascript">
 
-                    var pageNo = 1;
-                    var isPageLoad = true;
+                        var pageNo = 1;
+                        var isPageLoad = true;
 
-                    $(window).scroll(function () {
-                        if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-                            if (isPageLoad) {
-                                $.ajax({
-                                    url: '/Home/Index',
-                                    data: { page: pageNo },
-                                    success: function (data) {
-                                        $("#ajax-main").append(data);
-                                        pageNo++;
-                                        if ($.trim(data) == '') {
-                                            isPageLoad = false;
+                        $(window).scroll(function () {
+                            if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+                                if (isPageLoad) {
+                                    $.ajax({
+                                        url: '/Home/Index',
+                                        data: { page: pageNo },
+                                        success: function (data) {
+                                            $("#ajax-main").append(data);
+                                            pageNo++;
+                                            if ($.trim(data) == '') {
+                                                isPageLoad = false;
+                                            }
                                         }
-                                    }
-                                });
+                                    });
+                                }
                             }
-                        }
-                    });
-                </script>
+                        });
+                    </script>*@
 
+                <!--#region Site açılışında gelen bilgilendirme modalı-->
                 @*<script type="text/javascript">
                         $(document).ready(function () {
                             if (sessionStorage.getItem('#myModal') !== 'true') {
@@ -106,6 +167,7 @@
                             }
                         });
                     </script>*@
+                <!--#endregion-->
             }
         </div>
     </div>

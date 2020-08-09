@@ -40,13 +40,13 @@
             <a href="/Home/Index"><img src="~/Content/ogani/img/CatalcaliLogo.svg" style="height:100px; width:310px"></a>
         </div>
         @*<div class="humberger__menu__cart">
-            @Html.Action("Summary", "Cart")
-        </div>
-        <div class="humberger__menu__widget">
-            <div class="header__top__right__auth">
-                @Html.Partial("_LoginPartial")
+                @Html.Action("Summary", "Cart")
             </div>
-        </div>*@
+            <div class="humberger__menu__widget">
+                <div class="header__top__right__auth">
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </div>*@
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
                 @Html.Action("GetCategories", "Home")
@@ -92,7 +92,7 @@
     <!-- Hero Section Begin -->
     <section class="hero" style="background-color:#78a15c">
         <div class="container">
-            <div class="col-lg-15">
+            <div class="col-lg-12">
                 <nav class="header__menu">
                     <ul>
                         @Html.Action("GetCategories", "Home")
@@ -183,6 +183,7 @@
     <script src="~/Content/ogani/js/mixitup.min.js"></script>
     <script src="~/Content/ogani/js/owl.carousel.min.js"></script>
     <script src="~/Content/ogani/js/main.js"></script>
+    <script src="~/Scripts/sepete.ekle.ajax.js"></script>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
@@ -206,7 +207,7 @@
             });
 
         });
-                                        /*Scroll to top when arrow up clicked END*/
+                                                /*Scroll to top when arrow up clicked END*/
     </script>
 </body>
 

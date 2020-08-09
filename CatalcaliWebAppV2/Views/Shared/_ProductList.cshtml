@@ -2,6 +2,17 @@
 @using CatalcaliWebAppV2.Models
 @model IEnumerable<ProductModel>
 
+<style>
+    .title-icon {
+        width: 27px;
+        height: 27px;
+        display: inline-block;
+        margin-right: 10px;
+        margin-left: 80px;
+        margin-top: 14px;
+        position: absolute;
+    }
+</style>
 
 @foreach (var item in Model)
 {
@@ -9,16 +20,27 @@
         <div class="product__item">
             <div class="product__item__pic">
                 <img src="~/Areas/Admin/Upload/Product/@item.Image" />
-
             </div>
             <hr />
             <div class="product__item__text">
-
                 <h6><a href="@Url.Action("Details", "Home", new { name = @Url.FriendlyURLTitles(item.Name), id = item.ProductId })">@item.Name</a></h6>
                 <h5>@item.Price.ToString("N") ₺ </h5>
             </div>
-            @Html.ActionLink("Sepete Ekle", "AddToCart", "Cart", new { ProductId = item.ProductId }, new { @class = "btn btn-outline-success col-md-12" })
+            <button value="@item.ProductId" data-id="@item.ProductId" id="sepeteAt" class="btn btn-outline-success sepeteAt col-md-12">Sepete At</button>
             <hr />
         </div>
     </div>
 }
+<!-- Modal -->
+<div class="modal fade" id="sepeteEklendi" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="title-icon">
+                <img src="~/Content/ogani/img/icon-success.jpg" />
+            </div>
+            <div class="modal-body" style="text-align:center;">
+                Ürün başarıyla sepete eklenmiştir.
+            </div>
+        </div>
+    </div>
+</div>
