@@ -17,8 +17,8 @@
             margin-left: -1px;
             line-height: 1.428571429;
             text-decoration: none;
-            background-color: #78a15c;
-            border: 1px solid #78a15c;
+            background-color: #ffffff;
+            border: 1px solid #dddddd;
         }
 
         .pagination > li:first-child > a,
@@ -38,7 +38,7 @@
         .pagination > li > span:hover,
         .pagination > li > a:focus,
         .pagination > li > span:focus {
-            background-color: #78a15c;
+            background-color: #eeeeee;
         }
 
     .pagination > .active > a,
@@ -48,7 +48,7 @@
     .pagination > .active > a:focus,
     .pagination > .active > span:focus {
         z-index: 2;
-        color: #78a15c;
+        color: #ffffff;
         cursor: default;
         background-color: #78a15c;
         border-color: #78a15c;
@@ -58,10 +58,10 @@
     .pagination > .disabled > a,
     .pagination > .disabled > a:hover,
     .pagination > .disabled > a:focus {
-        color: #78a15c;
+        color: #999999;
         cursor: not-allowed;
-        background-color: #78a15c;
-        border-color: #78a15c;
+        background-color: #ffffff;
+        border-color: #dddddd;
     }
 
 .pagination-lg > li > a,
@@ -135,15 +135,15 @@
         .pager li > span {
             display: inline-block;
             padding: 5px 14px;
-            background-color: #78a15c;
-            border: 1px solid #78a15c;
+            background-color: #ffffff;
+            border: 1px solid #dddddd;
             border-radius: 15px;
         }
 
             .pager li > a:hover,
             .pager li > a:focus {
                 text-decoration: none;
-                background-color: #78a15c;
+                background-color: #eeeeee;
             }
 
     .pager .next > a,
@@ -160,7 +160,7 @@
     .pager .disabled > a:hover,
     .pager .disabled > a:focus,
     .pager .disabled > span {
-        color: #78a15c;
+        color: #999999;
         cursor: not-allowed;
-        background-color: #78a15c;
+        background-color: #ffffff;
     }

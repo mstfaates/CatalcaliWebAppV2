@@ -195,9 +195,9 @@ namespace CatalcaliWebAppV2.Controllers
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
                     // Send an email with this link
-                    var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    var callbackUrl = Url.Action("ConfirmEmail", "account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    await UserManager.SendEmailAsync(user.Id, "Çatalcalı Hesabınızı Onaylayın", "Bu linke tıklayarak Çatalcalı hesabınızı onaylayabilirsiniz:" + callbackUrl);
+                    //var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    //var callbackUrl = Url.Action("ConfirmEmail", "account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    //await UserManager.SendEmailAsync(user.Id, "Çatalcalı Hesabınızı Onaylayın", "Bu linke tıklayarak Çatalcalı hesabınızı onaylayabilirsiniz:" + callbackUrl);
 
                     return RedirectToAction("PleaseConfirmEmail", "account");
                 }
@@ -247,7 +247,7 @@ namespace CatalcaliWebAppV2.Controllers
             if (ModelState.IsValid)
             {
                 var user = await UserManager.FindByNameAsync(model.Email);
-                if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
+                if (user == null/* || !(await UserManager.IsEmailConfirmedAsync(user.Id))*/)
                 {
                     // Don't reveal that the user does not exist or is not confirmed
                     return View("sifremi-unuttum");

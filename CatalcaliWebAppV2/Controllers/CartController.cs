@@ -71,7 +71,7 @@ namespace CatalcaliWebAppV2.Controllers
         }
 
         [Route("siparis")]
-        [Authorize(Roles = "User,Admin")]
+        //[Authorize(Roles = "User,Admin")]
         public ActionResult Checkout()
         {
             Cart cart = new Cart();
@@ -85,7 +85,7 @@ namespace CatalcaliWebAppV2.Controllers
         }
         [HttpPost]
         [Route("siparis")]
-        [Authorize(Roles = "User,Admin")]
+        //[Authorize(Roles = "User,Admin")]
         public ActionResult Checkout(ShippingDetailsViewModel entity)
         {
             Cart cart = GetCart();
@@ -107,24 +107,45 @@ namespace CatalcaliWebAppV2.Controllers
             using (_context = new DataContext())
             {
                 Order order = new Order();
-                
-                order.OrderNumber = "A" + (new Random()).Next(11111, 99999).ToString();
-                order.Total = cart.shipping;
-                order.OrderDate = DateTime.Now;
-                order.OrderState = EnumOrderState.Bekleyen;
-                order.Username = User.Identity.Name;
-                order.İsim = entity.İsim;
-                order.Soyisim = entity.Soyisim;
-                order.AdresBasligi = entity.AdresBasligi;
-                order.Adres = entity.Adres;
-                order.Sehir = entity.Sehir;
-                order.İlce = entity.İlce;
-                order.Telefon = entity.Telefon;
-                order.Eposta = entity.Eposta;
-                order.PostaKodu = entity.PostaKodu;
-                order.OrderNote = entity.OrderNote;
-                order.Orderlines = new List<OrderLine>();
-
+                //üyelikli sipariş
+                if (User.Identity.Name == null || User.Identity.Name == "")
+                {
+                    order.OrderNumber = "A" + (new Random()).Next(11111, 99999).ToString();
+                    order.Total = cart.shipping;
+                    order.OrderDate = DateTime.Now;
+                    order.OrderState = EnumOrderState.Bekleyen;
+                    order.Username = entity.Eposta;
+                    order.İsim = entity.İsim;
+                    order.Soyisim = entity.Soyisim;
+                    order.AdresBasligi = entity.AdresBasligi;
+                    order.Adres = entity.Adres;
+                    order.Sehir = entity.Sehir;
+                    order.İlce = entity.İlce;
+                    order.Telefon = entity.Telefon;
+                    order.Eposta = entity.Eposta;
+                    order.PostaKodu = entity.PostaKodu;
+                    order.OrderNote = entity.OrderNote;
+                    order.Orderlines = new List<OrderLine>();
+                }
+                else //üyeliksiz sipariş
+                {
+                    order.OrderNumber = "A" + (new Random()).Next(11111, 99999).ToString();
+                    order.Total = cart.shipping;
+                    order.OrderDate = DateTime.Now;
+                    order.OrderState = EnumOrderState.Bekleyen;
+                    order.Username = User.Identity.Name;
+                    order.İsim = entity.İsim;
+                    order.Soyisim = entity.Soyisim;
+                    order.AdresBasligi = entity.AdresBasligi;
+                    order.Adres = entity.Adres;
+                    order.Sehir = entity.Sehir;
+                    order.İlce = entity.İlce;
+                    order.Telefon = entity.Telefon;
+                    order.Eposta = entity.Eposta;
+                    order.PostaKodu = entity.PostaKodu;
+                    order.OrderNote = entity.OrderNote;
+                    order.Orderlines = new List<OrderLine>();
+                }
                 foreach (var pr in cart.CartLines)
                 {
                     var orderline = new OrderLine();
