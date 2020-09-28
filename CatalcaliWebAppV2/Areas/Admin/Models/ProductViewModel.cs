@@ -11,6 +11,5 @@ namespace CatalcaliWebAppV2.Areas.Admin.Models
     {
         public Product Product { get; set; }
         public IEnumerable<SelectListItem> CategoryList { get; set; }
-
     }
 }

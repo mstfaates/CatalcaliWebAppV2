@@ -9,14 +9,14 @@ namespace CatalcaliWebAppV2.Repository
 {
     public class DbTool
     {
-        public static DataContext db = null;
+        public static DataContext Db = null;
         public static DataContext GetConnection()
         {
-            if (db == null)
+            if (Db == null)
             {
-                db = new DataContext();
+                Db = new DataContext();
             }
-            return db;
+            return Db;
         }
     }
 }

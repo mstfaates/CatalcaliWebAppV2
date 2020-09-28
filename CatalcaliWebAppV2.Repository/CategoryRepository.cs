@@ -2,14 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CatalcaliWebAppV2.Repository
 {
     public class CategoryRepository : GenericRepository<Category, int>
     {
-        DataContext _context = null;
+        private DataContext _context;
         ProcessResult<Category> result = new ProcessResult<Category>();
 
         public override Result<int> Create(Category item)
@@ -25,7 +23,7 @@ namespace CatalcaliWebAppV2.Repository
         {
             using (_context = new DataContext())
             {
-                Category toBeDeleted = _context.Categories.SingleOrDefault(x => x.Id == id);
+                var toBeDeleted = _context.Categories.SingleOrDefault(x => x.Id == id);
                 _context.Categories.Remove(toBeDeleted);
                 return result.GetResult(_context);
             }
