@@ -281,7 +281,7 @@ namespace CatalcaliWebAppV2.Controllers
         {
             return code == null ? View("Error") : View();
         }
-
+        
         //
         // POST: /hesabim/ResetPassword
         [HttpPost]

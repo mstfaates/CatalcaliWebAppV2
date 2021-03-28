@@ -158,23 +158,25 @@ namespace CatalcaliWebAppV2.Controllers
                 _context.Orders.Add(order);
                 _context.SaveChanges();
 
-                SmtpClient client = new SmtpClient();
-                client.Host = ConfigurationManager.AppSettings["EmailHost"].ToString();
-                client.Port = 25;
-                client.EnableSsl = false;
-                client.Credentials = new NetworkCredential(ConfigurationManager.AppSettings["Email"].ToString(), ConfigurationManager.AppSettings["Password"].ToString());
+                //SEND ORDER EMAİL TO USER
 
-                MailAddress from = new MailAddress(ConfigurationManager.AppSettings["Email"].ToString());
-                string to = order.Eposta.ToString();
-                MailMessage mail = new MailMessage(from.ToString(), to);
-                mail.CC.Add(to);
-                mail.Subject = "Çatalcalı Doğal Organik Gıda Sipariş Özetiniz";
-                mail.Body = "<span style ='font-size:50px; font-color:green'>Siparişin Bize Ulaştı!</span><br>" +
-                    "<span style ='font-size:20px'>Ödeme işlemi kapıda, Nakit veya Kredi Kartı ile gerçekleştireceğimizi unutma.<br>" +
-                    "Siparişini en hızlı şekilde sana ulaştırmak için seni arayıp bir gönderim saatini seçmeni isteyeceğiz.</span><br>" +
-                    "<span style='color: darkgrey; font-size:15px'>Çatalcalı Organik Doğal Gıdayı tercih ettiğiniz için teşekkür ederiz.</span>";
-                mail.IsBodyHtml = true;
-                client.Send(mail);
+                //SmtpClient client = new SmtpClient();
+                //client.Host = ConfigurationManager.AppSettings["EmailHost"].ToString();
+                //client.Port = 25;
+                //client.EnableSsl = false;
+                //client.Credentials = new NetworkCredential(ConfigurationManager.AppSettings["Email"].ToString(), ConfigurationManager.AppSettings["Password"].ToString());
+
+                //MailAddress from = new MailAddress(ConfigurationManager.AppSettings["Email"].ToString());
+                //string to = order.Eposta.ToString();
+                //MailMessage mail = new MailMessage(from.ToString(), to);
+                //mail.CC.Add(to);
+                //mail.Subject = "Çatalcalı Doğal Organik Gıda Sipariş Özetiniz";
+                //mail.Body = "<span style ='font-size:50px; font-color:green'>Siparişin Bize Ulaştı!</span><br>" +
+                //    "<span style ='font-size:20px'>Ödeme işlemi kapıda, Nakit veya Kredi Kartı ile gerçekleştireceğimizi unutma.<br>" +
+                //    "Siparişini en hızlı şekilde sana ulaştırmak için seni arayıp bir gönderim saatini seçmeni isteyeceğiz.</span><br>" +
+                //    "<span style='color: darkgrey; font-size:15px'>Çatalcalı Organik Doğal Gıdayı tercih ettiğiniz için teşekkür ederiz.</span>";
+                //mail.IsBodyHtml = true;
+                //client.Send(mail);
             }
         }
     }

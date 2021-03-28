@@ -9,6 +9,10 @@ namespace CatalcaliWebAppV2.Repository
 {
     public class DbTool
     {
+        public DbTool()
+        {
+                
+        }
         public static DataContext Db = null;
         public static DataContext GetConnection()
         {

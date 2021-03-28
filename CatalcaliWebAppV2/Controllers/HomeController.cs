@@ -126,6 +126,5 @@ namespace CatalcaliWebAppV2.Controllers
         {
             return View();
         }
-
     }
 }
